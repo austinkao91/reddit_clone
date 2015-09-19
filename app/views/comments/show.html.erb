@@ -1,0 +1,13 @@
+<h1><%= @comment.author %>'s Comment</h1>
+
+<ol>
+<% @comment.child_comments.each do |child| %>
+  <li>
+    <%= child.author %>
+    <br>
+    <%= child.content %>
+  </li>
+<% end %>
+</ol>
+
+<%= link_to "Post", post_url(@comment.post) %>

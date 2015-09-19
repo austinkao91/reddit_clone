@@ -1,0 +1,23 @@
+<h1><%= @post.title %></h1>
+<h2>Url: <%= @post.url %></h2>
+
+<p><%= @post.content %></p>
+
+<% if @post.user_id == current_user.id %>
+  <%= button_to "Edit", edit_post_url(@post), method: :get %>
+  <%= button_to "Delete", post_url(@post), method: :delete %>
+<% end %>
+
+<%= link_to "New Comment", new_post_comment_url(@post) %>
+
+<ul>
+<% @comments.each do |comment| %>
+  <li>
+    <%= comment.author.username %>
+    <br>
+    <%= comment.content %>
+  </li>
+<% end %>
+</ul>
+
+<%= link_to "Back to subs list", subs_url %>

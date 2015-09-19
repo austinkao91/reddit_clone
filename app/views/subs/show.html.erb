@@ -1,0 +1,16 @@
+<h1><%= @sub.title %></h1>
+
+<p><%= @sub.description %></p>
+
+<% if @sub.user_id == current_user.id %>
+  <%= button_to "Edit Sub", edit_sub_url(@sub), method: :get %>
+<% end %>
+
+<ul>
+<% @sub.posts.each do |post| %>
+  <li><%= link_to post.title, post_url(post) %></li>
+<% end %>
+</ul>
+
+<%= button_to "Create Post", new_post_url, method: :get %>
+<%= link_to "Back to subs list", subs_url %>
